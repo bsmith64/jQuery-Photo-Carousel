@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<title> Daily || Photo Carousel </title>
+<meta charset="UTF-8">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+
+<!-- jQuery -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<!-- Links -->
+<script src="javascript.js"></script>
+<link rel="stylesheet" type="text/css" href="carosel.css">
+
+</head>
+
+<body>
+
+<div class='container'>
+
+	<div class='page-header'>Photo Carousel
+	<span id='info'>Blake Smith | Daily Project | 8.9.15</span>
+	</div>
+
+	
+
+	<!-- <button class='btn' id='next'> Next Image </button> -->
+
+	<div class='row'>
+		<div class='col-md-1' id='previous'> PREV </div>	
+
+		<div class='col-md-10'>
+			<img src='./photos/routes.jpg' class='img-responsive img-center' id='routes'>
+			<img src='./photos/noah.jpg' class='img-responsive img-center' id='noah'>
+			<img src='./photos/moto.jpg' class='img-responsive img-center' id='moto'>
+			<img src='./photos/diablo.jpg' class='img-responsive img-center' id='diablo'>
+			<img src='./photos/beach.jpg' class='img-responsive img-center' id='beach'>
+		</div>
+
+		<div class='col-md-1' id='next'> NEXT </div>
+
+	</div>
+
+</div>
+
+<script>
+
+$(document).ready(function() {
+	
+	var $next = $('#next');
+	var $prev = $('#previous');
+	
+	var $routes = $('#routes');
+	var $noah = $('#noah');
+	var $moto = $('#moto');
+	var $diablo = $('#diablo');
+	var $beach = $('#beach');
+
+	var photos = [$noah, $routes, $moto, $beach, $diablo];
+	var counter = 0;
+
+
+	$(window).load(function() {
+		$routes.hide();
+		$moto.hide();
+		$diablo.hide();
+		$beach.hide();
+	});
+
+	
+
+	$next.click(function() {
+
+		if (counter === photos.length -1) {
+			photos[photos.length-1].hide();
+			counter = 0;
+			
+			photos[counter].fadeIn(500);
+		
+		} else { 
+
+		photos[counter].hide();
+		counter += 1;
+		photos[counter].fadeIn(300);
+
+		//return counter;
+		}
+
+		
+		
+	});
+
+		// Previous click fn
+		$prev.click(function() {
+			
+			if (counter === 0) {
+				photos[counter].hide();
+				counter = photos.length -1;
+				photos[counter].fadeIn(300);
+
+			} else {
+
+			photos[counter].hide();
+			counter -= 1;
+			photos[counter].fadeIn(300);
+			}
+		});
+
+
+});
+
+</script>
+
+
+
+
+
+</body>
+</html>
